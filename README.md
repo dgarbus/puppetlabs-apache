@@ -624,6 +624,28 @@ Installs and manages mod_auth_cas. The parameters `cas_login_url` and `cas_valid
 
 Full documentation on mod_auth_cas is available from [JASIG](https://github.com/Jasig/mod_auth_cas).
 
+<<<<<<< HEAD
+=======
+####Class: `apache::mod::geoip`
+
+Installs and manages mod_geoip.
+
+Full documentation on mod_geoip is available from [MaxMind](http://dev.maxmind.com/geoip/legacy/mod_geoip2/).
+
+These are the default settings:
+
+```puppet
+  class {'apache::mod::geoip':
+    $enable  => false,
+    $db_file => '/usr/share/GeoIP/GeoIP.dat',
+    $flag    => 'Standard',
+    $output  => 'All',
+  }
+```
+
+The parameter `db_file` can be a single directory or a hash of directories.
+
+>>>>>>> fefaa40... Fix variable names, convert flags to bool and use bool2httpd function
 ####Class: `apache::mod::info`
 
 Installs and manages mod_info which provides a comprehensive overview of the server configuration.
@@ -1826,6 +1848,25 @@ An array of hashes used to override the [ErrorDocument](https://httpd.apache.org
     }
 ```
 
+<<<<<<< HEAD
+=======
+######`geoip_enable`
+
+Sets the [GeoIPEnable](http://dev.maxmind.com/geoip/legacy/mod_geoip2/#Configuration) directive.
+Note that you must declare `class {'apache::mod::geoip': }` before using this directive.
+
+```puppet
+    apache::vhost { 'first.example.com':
+      docroot     => '/var/www/first',
+      directories => [
+        { path         => '/var/www/first',
+          geoip_enable => true,
+        },
+      ],
+    }
+```
+
+>>>>>>> fefaa40... Fix variable names, convert flags to bool and use bool2httpd function
 ######`headers`
 
 Adds lines for [Header](http://httpd.apache.org/docs/current/mod/mod_headers.html#header) directives.
