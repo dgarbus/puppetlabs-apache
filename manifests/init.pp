@@ -32,6 +32,7 @@ class apache (
   $service_enable         = true,
   $service_manage         = true,
   $service_ensure         = 'running',
+  $service_restart        = undef,
   $purge_configs          = true,
   $purge_vhost_dir        = undef,
   $purge_vdir             = false,
@@ -130,10 +131,11 @@ class apache (
   "Log level '${log_level}' is not one of the supported Apache HTTP Server log levels.")
 
   class { '::apache::service':
-    service_name   => $service_name,
-    service_enable => $service_enable,
-    service_manage => $service_manage,
-    service_ensure => $service_ensure,
+    service_name    => $service_name,
+    service_enable  => $service_enable,
+    service_manage  => $service_manage,
+    service_ensure  => $service_ensure,
+    service_restart => $service_restart,
   }
 
   # Deprecated backwards-compatibility
